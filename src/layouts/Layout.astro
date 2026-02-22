@@ -12,14 +12,17 @@ import "../styles/global.css";
         <meta name="generator" content={Astro.generator} />
         <title>Astro Basics</title>
     </head>
-    <body class="bg-slate-900 text-slate-200">
-        <nav>
+    <body class="bg-base-black text-slate-200">
+        <nav class="wrapper border border-nickel px-6 py-5">
             <a href="/">Home</a>
             <a href="/about">About</a>
             <a href="/contact">Code of Conduct</a>
             <a href="/blog">Blog</a>
         </nav>
-        <slot />
+
+        <div class="wrapper wrapper--ticks px-6 py-5">
+            <slot />
+        </div>
     </body>
 </html>
 

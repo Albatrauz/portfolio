@@ -1,1 +1,61 @@
 @import "tailwindcss";
+
+@theme {
+    --color-base-black: hsl(231.43deg 13.73% 10%);
+    --color-nickel: hsl(0deg 0.01% 17.93%);
+    --font-display: "Basteleur";
+    --color-stroke: hsl(0deg 0.01% 17.93%);
+}
+
+@font-face {
+    font-family: "Basteleur";
+    src: url("/fonts/Basteleur-Moonlight.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+.wrapper {
+    position: relative;
+    margin-inline: auto;
+    overflow-x: clip;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-right-color: var(--color-nickel);
+    border-left-color: var(--color-nickel);
+    max-width: calc(100vw - 2rem);
+    @media (min-width: 90rem) {
+        width: 90rem;
+    }
+}
+
+.wrapper--ticks {
+    &::before {
+        content: "";
+        border-left-color: var(--color-nickel);
+        border-top: 5px solid #0000;
+        border-bottom: 5px solid #0000;
+        border-right: 5px solid #0000;
+        border-left: 5px solid var(--color-stroke);
+        width: 0;
+        height: 0;
+        position: absolute;
+        top: -5px;
+        left: 0;
+        border-left-color: var(--color-nickel);
+    }
+
+    &::after {
+        content: "";
+        border-top: 5px solid #0000;
+        border-right: 5px solid var(--color-stroke);
+        border-bottom: 5px solid #0000;
+        border-left: 5px solid #0000;
+        width: 0;
+        height: 0;
+        position: absolute;
+        top: -5px;
+        right: 0;
+        border-right-color: var(--color-nickel);
+    }
+}
