@@ -1,46 +1,61 @@
-# Astro Starter Kit: Basics
+# Portfolio
 
-```sh
-npm create astro@latest -- --template basics
-```
+Persoonlijke portfolio- en blogsite, gebouwd met **Astro 7**. Blogposts staan als lokale Markdown/MDX in de repo — geen extern CMS.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Stack
 
-## 🚀 Project Structure
+- Astro 7 (static)
+- Content Collections (`src/content/blog/`)
+- MDX, RSS, sitemap
+- Node ≥ 22.12
 
-Inside of your Astro project, you'll see the following folders and files:
+## Structuur
 
 ```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+src/
+  content/
+    blog/              # Markdown/MDX-posts
+  content.config.ts    # Collection-schema
+  pages/
+    index.astro
+    blog/              # Lijst + [...id]
+  components/
+  layouts/
+  styles/
+public/
+  fonts/               # o.a. Basteleur (nog niet aangesloten)
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Commands
 
-## 🧞 Commands
+| Command | Actie |
+| --- | --- |
+| `npm install` | Dependencies installeren |
+| `npm run dev` | Dev-server op `localhost:4321` |
+| `npm run build` | Productiebuild naar `./dist/` |
+| `npm run preview` | Build lokaal previewen |
 
-All commands are run from the root of the project, from a terminal:
+## Blogpost toevoegen
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+1. Maak een bestand in `src/content/blog/`, bijvoorbeeld `mijn-post.md`.
+2. Vul frontmatter volgens het schema in `src/content.config.ts`:
 
-## 👀 Want to learn more?
+```md
+---
+title: 'Mijn post'
+description: 'Korte samenvatting'
+pubDate: 2026-08-06
+# updatedDate: 2026-08-07
+# heroImage: ../../assets/blog-placeholder-1.jpg
+---
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Inhoud in Markdown…
+```
+
+De slug volgt uit de bestandsnaam (`mijn-post` → `/blog/mijn-post`).
+
+## Opmerkingen
+
+- Soft-reset vanaf de eerdere Astro 6 + Directus-opzet: content leeft nu in de repo.
+- Site-URL staat nog op `https://example.com` in `astro.config.mjs` — pas aan bij deploy.
+- Displayfont Basteleur ligt in `public/fonts/` voor latere styling.
